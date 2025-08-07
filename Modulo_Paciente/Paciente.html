@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSP - Pacientes</title>
+  <link rel="shortcut icon" href="../img/Evosal.png">
+  <link rel="stylesheet" href="../Style/login.css"/>
+
+</head>
+<body>
+  <!-- Header -->
+  <header id="inicio" class="encabezado">
+         
+    <div class="top-header">
+      <div class="contenedor-top">
+          <div class="logo-texto">
+            <a href="../index.html"><img src="../img/Evosal.png" alt="Logo Evosalud"></a>
+            
+          </div>
+          <h2>El Nuevo Ecuador</h2> 
+      </div>
+        
+  </header>
+
+
+  <article class="contenido">
+
+
+    <!-- Formulario Login / Registro -->
+    <section class="login-container">
+
+      <!-- Título -->
+      <h2 class="login-titulo">Acceso para Pacientes</h2>
+      
+      <div class="login-box">
+       
+        <!-- Radios invisibles -->
+        <input type="radio" name="tab" id="tab-login" checked class="tab-input">
+        <input type="radio" name="tab" id="tab-registro" class="tab-input">
+
+        <!-- Pestañas -->
+        <div class="tabs">
+          <label for="tab-login"    class="tab">Inicia sesión</label>
+          <label for="tab-registro" class="tab">Regístrate</label>
+        </div>
+
+        <!-- Formulario de Login -->
+        <form id="form-login" class="form-section login-form" method="post" action="../Modulo_Paciente/perfilPaciente.php">
+          <input type="text"     name="usuario"  placeholder="Nombre de usuario"  pattern="[A-Za-z\s]+" title="Solo letras A-Z y a-z" required />
+          <input type="password" name="password" placeholder="Contraseña" minlength="8" required />
+          <a href="#" class="link">¿Has olvidado tu contraseña?</a>
+          <button type="submit" class="btn-ingresar">Iniciar sesión</button>
+        </form>
+
+        <!-- Formulario de Registro -->
+        <form id="form-registro" class="form-section registro-form" method="post" action="../Modulo_Paciente/Paciente.php">
+          <input type="text"     name="usuario"  placeholder="Nombre de usuario"  pattern="[A-Za-z\s]+" title="Solo letras A-Z y a-z" required />
+          <input type="text"     name="nombre"   placeholder="Nombre completo"  pattern="[A-Za-z\s]+" title="Solo letras A-Z y a-z" required />
+          <input type="password" name="password" placeholder="Crear contraseña" minlength="8" required />
+          <button type="submit" class="btn-ingresar">Crear cuenta</button>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- Video promocional -->
+    <section class="seccion-video">
+      <video autoplay muted playsinline loop>
+        <source src="../img/video.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </section>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">Términos y Condiciones</a>
+      <a href="#">Políticas de Privacidad</a>
+    </div>
+    <p>Clínica Evosalud - 2025</p>
+  </footer>
+</body>
+</html>
+
+

@@ -1,0 +1,722 @@
+/* ================= VARIABLES ================= */
+:root {
+  --color-primario: #0057A0;      /* Azul institucional */
+  --color-secundario: #8fcdff;    /* Azul claro */
+  --color-texto: #112233;         /* Texto oscuro */
+  --color-fondo: #ebebeb;         /* Fondo general claro */
+  --gris-claro: #f2f2f2;          /* Fondo secciones suaves */
+  --gris-oscuro: #333;            /* Texto más fuerte */
+  --gris-medio: #666;             /* Texto secundario */
+  --azul-texto: #004466;          /* Azul oscuro para resaltar texto */
+}
+
+/* ================= RESET ================= */
+/* Elimina márgenes y rellenos por defecto del navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo del documento */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+}
+
+/* Hace que las imágenes no se desborden y se ajusten */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Enlaces heredan color del texto y no tienen subrayado */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ================= COMPONENTES REUTILIZABLES ================= */
+
+/* Título principal usado en secciones destacadas */
+.titulo-general {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-primario);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Variante blanca */
+.titulo-blanco {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Subtítulo reutilizable */
+.subtitulo {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+}
+
+/* Título reutilizable para tarjetas (doctores, productos, etc.) */
+.titulo-tarjeta {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: var(--gris-oscuro);
+}
+
+/* Texto secundario o descripción breve */
+.texto-secundario {
+  font-size: 1rem;
+  color: var(--gris-medio);
+  margin-bottom: 15px;
+}
+
+/* Botón genérico reutilizable (Paciente, Doctor, etc.) */
+/* Botón con gradiente animado */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(120deg, #8fcdff, #0057A0);
+  background-size: 200% auto;
+  color: var(--color-texto);
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-position 0.6s ease;
+}
+
+/* Al pasar el mouse, animación de movimiento del gradiente */
+.btn:hover {
+  background-position: right center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+/* Contenedor de tarjetas o ítems en forma de grid */
+.contenedor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.tarjeta {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px #0000001a;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+
+/* Estilo base para cualquier sección general */
+.seccion {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Fondo claro reutilizable */
+.fondo-claro {
+  background-color: var(--gris-claro);
+}
+
+/* Fondo celeste claro para otras secciones */
+.fondo-azul {
+  background-color: #f7fafd;
+}
+
+/* ================= HEADER SUPERIOR ================= */
+
+/* Encabezado superior fijo */
+.top-header {
+  /*position: fixed;*/
+  top: 0;
+  width: 100%;
+  padding: 10px 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 1px 5px #0000004d;
+}
+
+/* Contenedor interno del encabezado superior */
+.contenedor-top {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Títulos dentro del header (h1, h2) */
+.titulo-header {
+  margin-left: 0;
+  font-size: 1.3rem;
+  color: var(--color-primario);
+}
+
+/* Contenedor que agrupa el logo y el nombre */
+.logo-texto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Logo institucional */
+.logo-texto img {
+  height: 80px;
+}
+
+
+/* ================= MENÚ DE NAVEGACIÓN ================= */
+
+/* Barra de navegación principal */
+.navegacion {
+  /*position: fixed;*/
+  top: 100px; /* justo debajo del .top-header que es fijo */
+  width: 100%;
+  z-index: 9;
+  background-color: #0058a09f;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Lista de navegación en horizontal */
+.contenedor-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.contenedor-nav a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.contenedor-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* Submenú oculto por defecto */
+.contenedor-nav li {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #0058a098;
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 0 0 8px 8px;
+  min-width: 180px;
+  z-index: 100;
+}
+
+/* Mostrar el submenú al pasar el mouse */
+.contenedor-nav li:hover .submenu {
+  display: block;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-align: left;
+}
+
+.submenu li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* ================= SECCIÓN HERO (PORTADA) ================= */
+.hero {
+  background-image: url('../img/img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 100px; /* espacio por el header fijo */
+}
+
+/* Capa oscura sobre la imagen de fondo */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Contenedor del texto centrado */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+
+/* ================= SECCIÓN DOCTORES ================= */
+
+/* Contenedor de doctores con grid ajustado */
+.contenedor-grid.doctores {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Imagen del doctor dentro de tarjeta */
+.tarjeta img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+/* Botones de acción en cada tarjeta (ver perfil, llamar) */
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Botón pequeño reutilizable con gradiente */
+.btn-mini {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #8fcdff, #0057A0);
+  background-size: 200% auto;
+  color: var(--color-texto);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-position 0.6s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto al pasar el mouse */
+.btn-mini:hover {
+  background-position: right center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+/* ================= SECCIÓN SERVICIOS ================= */
+
+/* Ajuste específico para el grid de servicios */
+.contenedor-grid.servicios {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Ajuste de imagen en tarjeta de servicio */
+.tarjeta img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 15px;
+}
+
+
+
+/* =============== SECCIÓN HORARIOS =============== */
+
+/* Contenedor principal de la sección (tipo barra lateral) */
+.barra-lateral {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Imágenes del lado izquierdo */
+.imagenes-horarios {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.imagen-horario {
+  width: 320px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px #00000026;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.imagen-horario:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 28px #00000033;
+}
+
+/* Caja con información de los horarios */
+.horarios-box {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #0000000d;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  max-width: 700px;
+  width: 100%;
+}
+
+.horarios-box p {
+  font-size: 1rem;
+  color: var(--gris-oscuro);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.horarios-box ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.horarios-box li {
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 28px;
+  color: var(--gris-oscuro);
+}
+
+.horarios-box li::before {
+  content: "🩺";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 1.1rem;
+}
+
+.horarios-box li span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--gris-medio);
+  margin-top: 3px;
+}
+
+.horarios-box strong {
+  color: var(--azul-texto);
+}
+
+.horarios-box p:last-of-type {
+  font-size: 1rem;
+  color: var(--azul-texto);
+  font-weight: 500;
+}
+
+
+/* ============== SECCIÓN TESTIMONIOS ============== */
+
+/* Ya cubierto por .seccion y .fondo-azul */
+
+/* Ajuste específico para el grid de testimonios */
+.contenedor-grid.testimonios {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Testimonio como tarjeta personalizada */
+.tarjeta.testimonio {
+  padding: 25px;
+  align-items: center;
+  text-align: center;
+}
+
+.tarjeta.testimonio img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px #00000028;
+}
+
+/* ================= FOOTER ================= */
+.footer-seccion {
+  background: linear-gradient(135deg, var(--color-secundario), var(--color-primario));
+  color: #ffffff;
+  padding: 20px 0px 0px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contenedor-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Títulos dentro del footer (h3) */
+.footer-seccion h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Párrafos dentro del footer (p) */
+.footer-seccion p {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* Logo */
+.footer-logo img {
+  max-width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Redes sociales */
+.footer-redes .iconos-redes {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.footer-redes .icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  color: var(--color-primario);
+  font-size: 20px;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-redes .icono:hover {
+  transform: scale(1.1);
+}
+
+/* Mapa */
+.footer-mapa iframe {
+  width: 100%;
+  height: 150px;
+  border-radius: 50px;
+  box-shadow: 0 2px 10px #ffffff1a;
+}
+
+/* Derechos Reservados */
+.footer-copy {
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-top: 1px solid #ffffff33;
+}
+
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .top-header {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffffcc;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .top-header img {
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .contenedor-top {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .btn-top {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    width: 90%;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  /* NAV */
+  .navegacion {
+    position: relative;
+    top: 0;
+    background-color: #004d7af2;
+  }
+
+  .contenedor-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 5px;
+  }
+
+  .contenedor-nav a {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    white-space: nowrap;
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    background-color: #004d7af2;
+    display: none;
+  }
+
+  .contenedor-nav li:hover > .submenu {
+    display: block;
+  }
+
+  .submenu li a {
+    padding: 8px 15px;
+    display: block;
+  }
+
+  /* SECCIÓN HORARIOS */
+  .barra-lateral {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  .imagenes-horarios {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .imagen-horario {
+    width: 150px;
+    height: auto;
+  }
+
+  .horarios-box {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .horarios-box h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .horarios-box p,
+  .horarios-box ul,
+  .horarios-box li {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .btn-servicio {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* TESTIMONIOS */
+  .contenedor-grid.testimonios {
+    grid-template-columns: 1fr;
+  }
+
+  .tarjeta.testimonio img {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* FOOTER */
+  .contenedor-footer {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .footer-logo img {
+    margin: 0 auto;
+  }
+
+  .footer-mapa iframe {
+    height: 200px;
+  }
+
+  /* BOTONES */
+  .btn,
+  .btn-mini {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+}
